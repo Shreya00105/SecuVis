@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alerts</title>
+</head>
+<body>
+     
+    {% extends "layout.html" %}
+{% block content %}
+
+<div style="margin:40px;">
+
+    <h2 style="color:#38bdf8; margin-bottom:20px;">Detected Security Alerts</h2>
+
+    <table class="alert-table">
+
+        <tr>
+            <th>Timestamp</th>
+            <th>Username</th>
+            <th>Source IP</th>
+            <th>Severity</th>
+            <th>Message</th>
+        </tr>
+
+        {% for alert in alerts %}
+        <tr class="
+            {% if alert.severity == 'CRITICAL' %}alert-row-critical{% endif %}
+            {% if alert.severity == 'WARNING' %}alert-row-warning{% endif %}
+        ">
+            <td>{{ alert.timestamp }}</td>
+            <td>{{ alert.username }}</td>
+            <td>{{ alert.ip }}</td>
+            <td>{{ alert.severity }}</td>
+            <td>{{ alert.message }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

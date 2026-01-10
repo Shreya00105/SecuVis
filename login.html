@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SecuVis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>SecuVis</h1>
+
+        {% if session.get("user") %}
+        <div>
+            <span style="margin-right:15px;">{{ session['user'] }}</span>
+            <a href="/logout" class="btn btn-primary">Logout</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Page Content -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
